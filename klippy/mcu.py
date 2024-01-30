@@ -742,6 +742,11 @@ class MCU:
             self._send_config(config_params['crc'])
         # Setup steppersync with the move_count returned by get_config
         move_count = config_params['move_count']
+        move_msg = "My Configured MCU '%s' (%d moves)" % (self._name, move_count)
+        logging.info(move_msg)
+        log_info = self._log_info() + "\n" + move_msg
+        self._printer.set_rollover_info(self._name, log_info, log=False)
+
         if move_count < self._reserved_move_slots:
             raise error("Too few moves available on MCU '%s'" % (self._name,))
         ffi_main, ffi_lib = chelper.get_ffi()

@@ -26,7 +26,7 @@
 #include "stepcompress.h" // stepcompress_alloc
 
 #define CHECK_LINES 1
-#define QUEUE_START_SIZE 1024
+#define QUEUE_START_SIZE 2048
 
 struct stepcompress {
     // Buffer management

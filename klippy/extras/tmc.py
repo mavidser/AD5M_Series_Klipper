@@ -324,9 +324,9 @@ class TMCCommandHelper:
                 # Shared enable via comms handling
                 self.fields.set_field("toff", self.toff)
             self._init_registers()
-            did_reset = self.echeck_helper.start_checks()
-            if did_reset:
-                self.mcu_phase_offset = None
+            # did_reset = self.echeck_helper.start_checks()
+            # if did_reset:
+            #     self.mcu_phase_offset = None
             # Calculate phase offset
             if self.mcu_phase_offset is not None:
                 return

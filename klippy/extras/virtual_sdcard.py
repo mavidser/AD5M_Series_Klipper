@@ -5,7 +5,7 @@
 # This file may be distributed under the terms of the GNU GPLv3 license.
 import os, logging, io
 
-VALID_GCODE_EXTS = ['gcode', 'g', 'gco']
+VALID_GCODE_EXTS = ['gcode', 'g', 'gco', 'gx']
 
 class VirtualSD:
     def __init__(self, config):
@@ -174,10 +174,10 @@ class VirtualSD:
         files_by_lower = { fname.lower(): fname for fname, fsize in files }
         fname = filename
         try:
-            if fname not in flist:
-                fname = files_by_lower[fname.lower()]
+            # if fname not in flist:
+                # fname = files_by_lower[fname.lower()]
             fname = os.path.join(self.sdcard_dirname, fname)
-            f = io.open(fname, 'r', newline='')
+            f = io.open(fname, 'r', errors='ignore', newline='')
             f.seek(0, os.SEEK_END)
             fsize = f.tell()
             f.seek(0)
